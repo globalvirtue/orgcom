@@ -1,0 +1,21 @@
+{
+  "name": "remindme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RemindMe – Multilingual Voice Messaging Platform",
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "db:generate": "cd backend && npx drizzle-kit generate",
+    "db:migrate": "cd backend && npx drizzle-kit migrate",
+    "db:studio": "cd backend && npx drizzle-kit studio",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,25 @@
+# ─── Build Stage ───
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY backend/package.json backend/package-lock.json* ./
+RUN npm install
+COPY backend/ .
+RUN npx tsc || true
+
+# ─── Development Stage ───
+FROM node:20-alpine AS dev
+WORKDIR /app
+COPY --from=build /app .
+RUN mkdir -p uploads/audio
+EXPOSE 3001
+CMD ["npx", "tsx", "watch", "src/app.ts"]
+
+# ─── Production Stage ───
+FROM node:20-alpine AS prod
+WORKDIR /app
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/package.json .
+RUN mkdir -p uploads/audio
+EXPOSE 3001
+CMD ["node", "dist/app.js"]
