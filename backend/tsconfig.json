@@ -4,6 +4,7 @@
         "module": "NodeNext",
         "moduleResolution": "Node16",
         "allowImportingTsExtensions": true,
+        "noEmit": true,
         "lib": [
             "ES2022"
         ],
