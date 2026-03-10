@@ -2,7 +2,8 @@
     "compilerOptions": {
         "target": "ES2022",
         "module": "NodeNext",
-        "moduleResolution": "NodeNext",
+        "moduleResolution": "Node16",
+        "allowImportingTsExtensions": true,
         "lib": [
             "ES2022"
         ],
