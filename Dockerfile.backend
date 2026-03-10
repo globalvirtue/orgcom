@@ -4,7 +4,7 @@ WORKDIR /app
 COPY backend/package.json backend/package-lock.json* ./
 RUN npm install
 COPY backend/ .
-RUN npx tsc || true
+RUN npx tsc
 
 # ─── Development Stage ───
 FROM node:20-alpine AS dev
